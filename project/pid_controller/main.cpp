@@ -309,7 +309,7 @@ int main ()
           * TODO (step 3): compute the steer error (error_steer) from the position and the desired trajectory
           **/
 //           error_steer = 0;
-          // Get the angle between the car's current position and that desired by the path planner
+          // Get the angle between the current and next path points
           // Compare this angle to the actual angle of the car's trajectory
 		  error_steer = angle_between_points(x_position, y_position, x_points.back(), y_points.back()) - yaw;
           /**
@@ -345,7 +345,7 @@ int main ()
           **/
           // modify the following line for step 2
           // error_throttle = 0;
-          // Take the difference between that actual speed and the speed computed by the path planner
+          // Take the difference between that actual speed and the last speed given by the path planner
           error_throttle = v_points.back() - velocity;
 
 

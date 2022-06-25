@@ -42,7 +42,7 @@ void PID::UpdateError(double cte) {
   	  diff_cte = (cte - prev_cte) / delta_time;
   	}
   prev_cte = cte;
-  sigma_cte = cte * delta_time;
+  sigma_cte += cte * delta_time;
 }
 
 double PID::TotalError() {
