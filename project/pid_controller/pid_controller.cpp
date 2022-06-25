@@ -27,7 +27,7 @@ void PID::Init(double Kpi, double Kii, double Kdi, double output_lim_maxi, doubl
   diff_cte = 0.0;
   prev_cte = 0.0;
   sigma_cte = 0.0;
-  delta_time = 1.0;
+  //delta_time = 1.0;
 }
 
 
@@ -35,7 +35,7 @@ void PID::UpdateError(double cte) {
    /**
    * TODO: Update PID errors based on cte.
    **/
-  if(delta_time)==0{
+  if(delta_time==0){
   	  diff_cte = 0.0;
   	}
   else{
@@ -51,8 +51,8 @@ double PID::TotalError() {
     * The code should return a value in the interval [output_lim_mini, output_lim_maxi]
    */
     //double control;
-    double control = - Kpi * prev_cte - Kii * sigma_cte - Kdi * diff_cte;
-    control = min(output_lim_max_i, max(output_lim_min_i, control));
+    double control = Kpi * prev_cte + Kii * sigma_cte + Kdi * diff_cte;
+    control = min(output_lim_maxi, max(output_lim_mini, control));
     return control;
 }
 
